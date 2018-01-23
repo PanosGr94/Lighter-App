@@ -8,12 +8,100 @@
     tools:context="com.panos.lenovoppc.lighterapp.MainActivity">
 
     <TextView
+        android:id="@+id/question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="32dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:text="@string/question"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintRight_toLeftOf="@id/player1"
+        app:layout_constraintBottom_toBottomOf="@id/player1"
+        app:layout_constraintTop_toTopOf="@id/player1"/>
+
+    <TextView
+        android:id="@+id/player1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="32dp"
+        android:text="@string/player1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/question"/>
+
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintRight_toLeftOf="@id/player2"
+        app:layout_constraintBottom_toBottomOf="@id/player2"
+        app:layout_constraintTop_toTopOf="@id/player2"/>
+
+    <TextView
+        android:id="@+id/player2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/player2"
+        android:padding="32dp"
+        app:layout_constraintLeft_toLeftOf="@id/player1"
+        app:layout_constraintTop_toBottomOf="@id/player1"
+        />
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintRight_toLeftOf="@id/player3"
+        app:layout_constraintBottom_toBottomOf="@id/player3"
+        app:layout_constraintTop_toTopOf="@id/player3"/>
+
+    <TextView
+        android:id="@+id/player3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/player3"
+        android:padding="32dp"
+        app:layout_constraintLeft_toLeftOf="@id/player1"
+        app:layout_constraintTop_toBottomOf="@id/player2"
+        />
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintRight_toLeftOf="@id/player4"
+        app:layout_constraintBottom_toBottomOf="@id/player4"
+        app:layout_constraintTop_toTopOf="@id/player4"/>
+
+    <TextView
+        android:id="@+id/player4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/player4"
+        android:padding="32dp"
+        app:layout_constraintLeft_toLeftOf="@id/player1"
+        app:layout_constraintTop_toBottomOf="@id/player3"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_skip"
+        android:layout_marginBottom="32dp"
+        android:layout_marginRight="32dp"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>

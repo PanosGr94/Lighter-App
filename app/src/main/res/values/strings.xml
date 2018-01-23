@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">LighterApp</string>
+    <string name="question">Is this an example question?</string>
+    <string name="player1">Panos</string>
+    <string name="player2">Manos</string>
+    <string name="player3">Thanos</string>
+    <string name="player4">Kyrillos</string>
+    <string name="btn_skip">Skip</string>
+    <string name="btn_main_solo">Solo Game</string>
+    <string name="btn_main_multi">Online Game</string>
 </resources>
