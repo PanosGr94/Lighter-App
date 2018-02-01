@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * Created by Lenovo pPc on 25-Jan-18.
  */
@@ -64,7 +66,7 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerView
     /* This could be a separate class. It implements Android.onclicklistener in order for it to be clickable */
     public class PlayerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        ImageView mPlayerImageView ;
+        CircleImageView mPlayerImageView ;
         TextView mPlayerNameTextView;
 
         public PlayerViewHolder(View itemView) {

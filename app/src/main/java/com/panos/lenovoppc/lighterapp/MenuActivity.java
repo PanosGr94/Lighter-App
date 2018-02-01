@@ -19,7 +19,7 @@ public class MenuActivity extends Activity{
     }
 
     public void startSoloGame(View view) {
-        Intent startNewGame = new Intent(this, MainActivity.class);
+        Intent startNewGame = new Intent(this, SoloGameActivity.class);
         startActivity(startNewGame);
     }
 }

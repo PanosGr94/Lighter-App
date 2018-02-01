@@ -1,20 +1,27 @@
 package com.panos.lenovoppc.lighterapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
-import static android.graphics.Color.BLACK;
 import static android.graphics.Color.GRAY;
-import static android.graphics.Color.GREEN;
 
-//TODO 1: Setup Question Model and bring random to question
-//TODO 2: Use CardViews for players - https://developer.android.com/reference/android/support/v7/widget/CardView.html
+//TODO:
+//TODO: Fix crash when input number of players == 0
+//TODO: Get Questions from a DB into the app and showing...
+//TODO: Make create an insert question menu & make it float on top of the menu activity
+//TODO: Connect the inserted question into a DB
+//TODO: Make sure only one player can be selected and when Update UI deselect player
+//TODO: Fix the inconsistency in state when the user switches to landscape. Maybe make landscape inaccessible - temporarily?
+//TODO: Use CardViews for players - https://developer.android.com/reference/android/support/v7/widget/CardView.html
 
 
 public class MainActivity extends AppCompatActivity implements PlayerAdapter.onClickListenerInterface {
@@ -22,23 +29,44 @@ public class MainActivity extends AppCompatActivity implements PlayerAdapter.onC
     private RecyclerView mPlayersRecyclerView;
     private RecyclerView.Adapter mPlayerAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private QuestionModel currentQuestion;
+    private TextView mQuestionTextView;
+    private TextView mCategoryTextView;
+    private Button mSkipButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ArrayList<PlayerModel> arrayList = new ArrayList<PlayerModel>();
+
+
+        /*DataSet for Questions*/
+
+        final ArrayList<QuestionModel> questions = new ArrayList<>();
+        questions.add(new QuestionModel("Who is the strongest?", "categoryA", false));
+        questions.add(new QuestionModel("Who is the fastest?", "categoryB", false));
+        questions.add(new QuestionModel("Who is the tallest?", "categoryC", true));
+        questions.add(new QuestionModel("Who is the wierdest?", "categoryD", false));
+        questions.add(new QuestionModel("Who is the smartest?", "categoryA", true));
+        //sets up the current question in the UI
+        mQuestionTextView = (TextView) findViewById(R.id.tv_question);
+        mCategoryTextView = (TextView) findViewById(R.id.tv_category);
+        updateCurrentUI(questions);
+        //sets a listener to the skip button to change the question when necessary
+        mSkipButton = (Button) findViewById(R.id.btn_skip);
+        mSkipButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateCurrentUI(questions);
+            }
+        });
+
 
         /* DataSet for RecyclerView */
 
-        ArrayList<PlayerModel> arrayList = new ArrayList<PlayerModel>();
-        arrayList.add(new PlayerModel(getResources().getString(R.string.player1), R.mipmap.ic_launcher));
-        arrayList.add(new PlayerModel(getResources().getString(R.string.player2), R.mipmap.ic_launcher));
-        arrayList.add(new PlayerModel(getResources().getString(R.string.player3), R.mipmap.ic_launcher));
-        arrayList.add(new PlayerModel(getResources().getString(R.string.player4), R.mipmap.ic_launcher));
-        arrayList.add(new PlayerModel(getResources().getString(R.string.player1), R.mipmap.ic_launcher));
-        arrayList.add(new PlayerModel(getResources().getString(R.string.player2), R.mipmap.ic_launcher));
-        arrayList.add(new PlayerModel(getResources().getString(R.string.player3), R.mipmap.ic_launcher));
-        arrayList.add(new PlayerModel(getResources().getString(R.string.player4), R.mipmap.ic_launcher));
+        Intent intent = getIntent();
+        arrayList = intent.getParcelableArrayListExtra("players");
 
         /*Code Needed for RecyclerView */
 
@@ -59,10 +87,37 @@ public class MainActivity extends AppCompatActivity implements PlayerAdapter.onC
     @Override
     public void onClick(PlayerAdapter.PlayerViewHolder player) {
         int current = player.mPlayerNameTextView.getCurrentTextColor();
-        if(current==GREEN){
+        if(current==getResources().getColor(R.color.colorPrimary)){
             player.mPlayerNameTextView.setTextColor(GRAY);
         }else{
-            player.mPlayerNameTextView.setTextColor(GREEN);
+            player.mPlayerNameTextView.setTextColor(getResources().getColor(R.color.colorPrimary));
         }
     }
+
+
+    /**
+     * Method for selecting a single question out of the datasource and returning it.
+     * @param questionList is the datasource from which it will retrieve a new question
+     * @return a {@link QuestionModel} type question
+     */
+    public QuestionModel getQuestion(ArrayList<QuestionModel> questionList){
+        QuestionModel newQuestion = questionList.get(new Random().nextInt(questionList.size()));
+        return newQuestion;
+    }
+
+    /**
+     * Method for updating the UI when a new question must come up
+     * @param questionList the datasource from which a question will be picked
+     */
+    public void updateCurrentUI(ArrayList<QuestionModel> questionList){
+
+        //gets a random question from the above list
+        currentQuestion = getQuestion(questionList);
+        mQuestionTextView.setText(currentQuestion.getQuestion());
+        mCategoryTextView.setText(currentQuestion.getCategory());
+
+
+    }
+
+
 }

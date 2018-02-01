@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.panos.lenovoppc.lighterapp.SoloGameActivity">
+
+    <TextView
+        android:id="@+id/tv_preparesolotitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="cursive"
+        android:text="@string/players"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="64sp"
+        android:textStyle="italic"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_prepareplayers"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="8dp"
+
+
+        app:layout_constraintHeight_default="wrap"
+
+        app:layout_constraintTop_toBottomOf="@id/tv_preparesolotitle"
+        app:layout_constraintLeft_toLeftOf="@id/et_newplayer"
+        app:layout_constraintRight_toRightOf="@id/btn_addnewplayer"
+        app:layout_constraintBottom_toTopOf="@id/tv_hintie"
+
+        app:layout_constraintWidth_default="spread"/>
+
+    <TextView
+        android:id="@+id/tv_hintie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pregame_info"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textStyle="italic"
+        android:textColor="@android:color/darker_gray"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@id/btn_addnewplayer"
+        app:layout_constraintRight_toRightOf="@id/rv_prepareplayers"
+        />
+
+    <EditText
+        android:id="@+id/et_newplayer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+
+        app:layout_constraintBottom_toTopOf="@id/fab_startsologame"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/btn_addnewplayer"
+        />
+
+    <Button
+        android:id="@+id/btn_addnewplayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:onClick="addNewPlayer"
+        android:text="@string/add"
+
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toTopOf="@id/fab_startsologame"
+        app:layout_constraintLeft_toRightOf="@id/et_newplayer"
+
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_startsologame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:srcCompat="@android:drawable/ic_media_play"/>
+
+
+</android.support.constraint.ConstraintLayout>

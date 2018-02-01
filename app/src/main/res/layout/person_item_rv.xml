@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:id="@+id/ll_rvitemdesign"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:background="@drawable/border_detail"
+    android:padding="10dp"
+    android:layout_marginBottom="5dp"
     android:orientation="horizontal">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/rvitem_image"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="50dp"
         android:layout_weight="2"
         android:layout_gravity="center_vertical"
         android:src="@mipmap/ic_launcher"/>
@@ -20,7 +23,7 @@
         android:layout_height="match_parent"
         android:layout_weight="3"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:text="@string/player4"
+        android:text="@string/players"
         android:gravity="center"
         />
 
